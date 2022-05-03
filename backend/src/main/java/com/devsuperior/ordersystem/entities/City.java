@@ -2,12 +2,10 @@ package com.devsuperior.ordersystem.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 @Entity
-@Table(name = "tb_state")
-public class State implements Serializable {
+@Table(name = "tb_city")
+public class City implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -15,15 +13,17 @@ public class State implements Serializable {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "state")
-    private List<City> cities = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "state_id")
+    private State state;
 
-    public State(){
+    public City(){
     }
 
-    public State(Long id, String name) {
+    public City(Long id, String name, State state) {
         this.id = id;
         this.name = name;
+        this.state = state;
     }
 
     public Long getId() {
@@ -42,20 +42,20 @@ public class State implements Serializable {
         this.name = name;
     }
 
-    public List<City> getCities() {
-        return cities;
+    public State getState() {
+        return state;
     }
 
-    public void addCities(City city) {
-        this.cities.add(city);
+    public void setState(State state) {
+        this.state = state;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        State state = (State) o;
-        return Objects.equals(id, state.id);
+        City city = (City) o;
+        return Objects.equals(id, city.id);
     }
 
     @Override
