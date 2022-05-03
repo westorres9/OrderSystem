@@ -3,7 +3,9 @@ package com.devsuperior.ordersystem.dto;
 import com.devsuperior.ordersystem.entities.Category;
 import com.devsuperior.ordersystem.entities.Product;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ProductDTO {
@@ -12,7 +14,7 @@ public class ProductDTO {
     private String name;
     private Double price;
 
-    private Set<CategoryDTO> categories= new HashSet<CategoryDTO>();
+    private List<CategoryDTO> categories= new ArrayList<>();
 
     public ProductDTO() {
     }
@@ -29,7 +31,7 @@ public class ProductDTO {
         this.price = entity.getPrice();
     }
 
-    public ProductDTO(Product entity, Set<Category> categories) {
+    public ProductDTO(Product entity, List<Category> categories) {
         this(entity);
         categories.forEach(cat -> this.categories.add(new CategoryDTO(cat)));
     }
@@ -58,5 +60,7 @@ public class ProductDTO {
         this.price = price;
     }
 
-
+    public List<CategoryDTO> getCategories() {
+        return categories;
+    }
 }
