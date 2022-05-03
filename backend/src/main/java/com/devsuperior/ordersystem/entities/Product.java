@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 @Entity
-@Table(name = "tb_products")
+@Table(name = "tb_product")
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -16,8 +16,8 @@ public class Product implements Serializable {
     private String name;
     private Double price;
 
-    @ManyToMany
-    @JoinTable(name = "product_category",
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "tb_product_category",
         joinColumns = @JoinColumn(name = "product_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id")
     )
