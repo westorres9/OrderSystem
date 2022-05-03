@@ -40,3 +40,15 @@ INSERT INTO tb_city (name,state_id) VALUES ('Porto Seguro', 4);
 
 
 
+
+INSERT INTO tb_client(name, email, type) VALUES ('Wester', 'wester@gmail.com', 1);
+INSERT INTO tb_phones(phone, client_id) VALUES ('99176-1899', 1);
+
+INSERT INTO tb_address(street, number, postal_code, client_id, city_id) VALUES ('Rua arca', 271, '38407-270', 1, 5);
+
+
+
+
+
+
+

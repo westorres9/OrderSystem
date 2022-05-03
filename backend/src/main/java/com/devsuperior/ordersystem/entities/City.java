@@ -2,6 +2,8 @@ package com.devsuperior.ordersystem.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 @Entity
 @Table(name = "tb_city")
@@ -12,6 +14,9 @@ public class City implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @OneToMany(mappedBy = "city")
+    public List<Address> addresses = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "state_id")
@@ -49,6 +54,11 @@ public class City implements Serializable {
     public void setState(State state) {
         this.state = state;
     }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
 
     @Override
     public boolean equals(Object o) {
