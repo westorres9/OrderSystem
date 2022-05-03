@@ -63,4 +63,8 @@ public class ProductDTO {
     public List<CategoryDTO> getCategories() {
         return categories;
     }
+
+    public void addCategoryDTO(Category cat) {
+        this.categories.add(new CategoryDTO(cat));
+    }
 }
