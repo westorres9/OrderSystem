@@ -14,25 +14,25 @@ public class Address implements Serializable {
     private String street;
     private String number;
     private String postalCode;
+    private String city;
+    private String state;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
 
     public Address() {
     }
 
-    public Address(Long id, String street, String number, String postalCode, Client client, City city) {
+    public Address(Long id, String street, String number, String postalCode, Client client, String city, String state) {
         this.id = id;
         this.street = street;
         this.number = number;
         this.postalCode = postalCode;
         this.client = client;
         this.city = city;
+        this.state = state;
     }
 
     public Long getId() {
@@ -75,12 +75,20 @@ public class Address implements Serializable {
         this.client = client;
     }
 
-    public City getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     @Override

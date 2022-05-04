@@ -1,14 +1,7 @@
 package com.devsuperior.ordersystem.dto;
 
-import com.devsuperior.ordersystem.entities.Address;
-import com.devsuperior.ordersystem.entities.Category;
-import com.devsuperior.ordersystem.entities.Client;
-import com.devsuperior.ordersystem.entities.Product;
-import com.devsuperior.ordersystem.entities.enums.ClientType;
+import com.devsuperior.ordersystem.entities.*;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -19,28 +12,29 @@ public class ClientDTO {
     private Long id;
     private String name;
     private String email;
-    private Integer type;
+    private String phone;
     private List<AddressDTO> addresses = new ArrayList<>();
-    private Set<String> phone = new HashSet<>();
 
-    public ClientDTO(){
+
+    public ClientDTO() {
     }
 
-    public ClientDTO(Long id, String name, String email, Integer type) {
+    public ClientDTO(Long id, String name, String email, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.type = type;
+        this.phone = phone;
     }
 
     public ClientDTO(Client entity) {
         this.id = entity.getId();
         this.name = entity.getName();
         this.email = entity.getEmail();
-        this.type = entity.getType().getId();
+        this.phone = entity.getPhone();
+
     }
 
-    public ClientDTO(Client entity, List<Address> adressess){
+    public ClientDTO(Client entity, List<Address> adressess) {
         this(entity);
         adressess.forEach(address -> this.addresses.add(new AddressDTO(address)));
     }
@@ -69,19 +63,16 @@ public class ClientDTO {
         this.email = email;
     }
 
-    public ClientType getType() {
-        return ClientType.toEnum(type);
+    public String getPhone() {
+        return phone;
     }
 
-    public void setType(ClientType type) {
-        this.type = type.getId();
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public List<AddressDTO> getAddresses() {
         return addresses;
     }
-
-    public Set<String> getPhone() {
-        return phone;
-    }
 }
+

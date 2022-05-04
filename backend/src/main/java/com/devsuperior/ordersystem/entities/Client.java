@@ -1,8 +1,5 @@
 package com.devsuperior.ordersystem.entities;
 
-import com.devsuperior.ordersystem.entities.enums.ClientType;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
@@ -16,23 +13,23 @@ public class Client implements Serializable {
     private Long id;
     private String name;
     private String email;
-    private Integer type;
+    private String phone;
+
 
     @OneToMany(mappedBy = "client")
     private List<Address> addresses = new ArrayList<>();
 
-    @ElementCollection
-    @CollectionTable(name = "tb_phones")
-    private Set<String> phone = new HashSet<>();
+    private List<Request> requests = new ArrayList<>();
+
 
     public Client() {
     }
 
-    public Client(Long id, String name, String email, ClientType type) {
+    public Client(Long id, String name, String email, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.type = type.getId();
+        this.phone = phone;
     }
 
     public Long getId() {
@@ -59,20 +56,28 @@ public class Client implements Serializable {
         this.email = email;
     }
 
-    public ClientType getType() {
-        return ClientType.toEnum(type);
+    public String getPhone() {
+        return phone;
     }
 
-    public void setType(ClientType type) {
-        this.type = type.getId();
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public List<Address> getAddresses() {
         return addresses;
     }
 
-    public Set<String> getPhone() {
-        return phone;
+    public void addAddresses(Address address) {
+        addresses.add(address);
+    }
+
+    public List<Request> getRequests() {
+        return requests;
+    }
+
+    public void addRequest(Request request){
+        requests.add(request);
     }
 
     @Override
