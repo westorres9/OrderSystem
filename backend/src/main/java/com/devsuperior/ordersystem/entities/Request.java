@@ -1,7 +1,11 @@
 package com.devsuperior.ordersystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
 import java.util.Objects;
 @Entity
@@ -12,19 +16,25 @@ public class Request implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date moment;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant moment;
 
     @OneToOne(cascade =CascadeType.ALL, mappedBy = "request")
     private Payment payment;
 
+    @ManyToOne
+    @JoinColumn(name = "client_id")
     private Client client;
 
+    @ManyToOne
+    @JoinColumn(name = "address_id")
     private Address deliveryAddress;
 
     public Request() {
     }
 
-    public Request(Long id, Date moment, Payment payment, Client client, Address deliveryAddress) {
+    public Request(Long id, Instant moment, Payment payment, Client client, Address deliveryAddress) {
         this.id = id;
         this.moment = moment;
         this.payment = payment;
@@ -40,11 +50,11 @@ public class Request implements Serializable {
         this.id = id;
     }
 
-    public Date getMoment() {
+    public Instant getMoment() {
         return moment;
     }
 
-    public void setMoment(Date moment) {
+    public void setMoment(Instant moment) {
         this.moment = moment;
     }
 

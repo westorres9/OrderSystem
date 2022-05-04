@@ -2,8 +2,9 @@ package com.devsuperior.ordersystem.entities;
 
 import com.devsuperior.ordersystem.entities.enums.StatePayment;
 
+import javax.persistence.Entity;
 import java.util.Date;
-
+@Entity
 public class TicketPayment extends Payment{
     private static final long serialVersionUID = 1L;
 

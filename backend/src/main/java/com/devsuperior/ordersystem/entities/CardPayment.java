@@ -2,6 +2,9 @@ package com.devsuperior.ordersystem.entities;
 
 import com.devsuperior.ordersystem.entities.enums.StatePayment;
 
+import javax.persistence.Entity;
+
+@Entity
 public class CardPayment extends Payment {
     private static final long serialVersionUID = 1L;
 

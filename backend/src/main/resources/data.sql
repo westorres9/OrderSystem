@@ -45,7 +45,7 @@ INSERT INTO tb_address(street, number, postal_code, client_id, city , state) VAL
 INSERT INTO tb_address(street, number, postal_code, client_id, city , state) VALUES ('Av. João Naves de Ávila', 1441, '38400-053',9 ,'Salvador','BA');
 INSERT INTO tb_address(street, number, postal_code, client_id, city , state) VALUES ('Avenida Coronel Jose Teofilo Carneiro', 1001, '38401-344',10 , 'Porto Seguro', 'BA');
 
-
+INSERT INTO tb_request(moment, client_id, address_id) VALUES ( '2020-07-14T10:00:00Z', 1, 1);
 
 
 
