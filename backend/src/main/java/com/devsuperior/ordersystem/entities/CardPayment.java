@@ -3,8 +3,10 @@ package com.devsuperior.ordersystem.entities;
 import com.devsuperior.ordersystem.entities.enums.StatePayment;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_card_payment")
 public class CardPayment extends Payment {
     private static final long serialVersionUID = 1L;
 

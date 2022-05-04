@@ -3,8 +3,10 @@ package com.devsuperior.ordersystem.entities;
 import com.devsuperior.ordersystem.entities.enums.StatePayment;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 @Entity
+@Table(name = "tb_ticket_payment")
 public class TicketPayment extends Payment{
     private static final long serialVersionUID = 1L;
 

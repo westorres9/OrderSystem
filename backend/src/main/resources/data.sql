@@ -46,6 +46,44 @@ INSERT INTO tb_address(street, number, postal_code, client_id, city , state) VAL
 INSERT INTO tb_address(street, number, postal_code, client_id, city , state) VALUES ('Avenida Coronel Jose Teofilo Carneiro', 1001, '38401-344',10 , 'Porto Seguro', 'BA');
 
 INSERT INTO tb_request(moment, client_id, address_id) VALUES ( '2020-07-14T10:00:00Z', 1, 1);
+INSERT INTO tb_request(moment, client_id, address_id) VALUES ( '2020-10-15T10:00:00Z', 2, 2);
+INSERT INTO tb_request(moment, client_id, address_id) VALUES ( '2020-06-16T10:00:00Z', 2, 2);
+INSERT INTO tb_request(moment, client_id, address_id) VALUES ( '2020-02-17T10:00:00Z', 3, 3);
+INSERT INTO tb_request(moment, client_id, address_id) VALUES ( '2020-03-18T10:00:00Z', 3, 3);
+INSERT INTO tb_request(moment, client_id, address_id) VALUES ( '2020-04-19T10:00:00Z', 4, 4);
+INSERT INTO tb_request(moment, client_id, address_id) VALUES ( '2020-05-20T10:00:00Z', 5, 5);
+INSERT INTO tb_request(moment, client_id, address_id) VALUES ( '2020-06-21T10:00:00Z', 6, 6);
+INSERT INTO tb_request(moment, client_id, address_id) VALUES ( '2020-07-22T10:00:00Z', 7, 7);
+INSERT INTO tb_request(moment, client_id, address_id) VALUES ( '2020-08-23T10:00:00Z', 8, 8);
+
+INSERT INTO tb_payment(request_id, state) VALUES (1,1);
+INSERT INTO tb_payment(request_id, state) VALUES (2,2);
+INSERT INTO tb_payment(request_id, state) VALUES (3,3);
+INSERT INTO tb_payment(request_id, state) VALUES (4,3);
+INSERT INTO tb_payment(request_id, state) VALUES (5,2);
+INSERT INTO tb_payment(request_id, state) VALUES (6,1);
+INSERT INTO tb_payment(request_id, state) VALUES (7,2);
+INSERT INTO tb_payment(request_id, state) VALUES (8,1);
+INSERT INTO tb_payment(request_id, state) VALUES (9,3);
+INSERT INTO tb_payment(request_id, state) VALUES (10,2);
+
+INSERT INTO tb_ticket_payment(request_id, due_date, payment_date) VALUES (1,'2020-08-23T10:00:00Z','2020-09-23T10:00:00Z');
+INSERT INTO tb_ticket_payment(request_id, due_date, payment_date) VALUES (2,'2020-07-20T10:00:00Z','2020-08-20T10:00:00Z');
+INSERT INTO tb_ticket_payment(request_id, due_date, payment_date) VALUES (3,'2020-06-18T10:00:00Z','2020-07-18T10:00:00Z');
+INSERT INTO tb_ticket_payment(request_id, due_date, payment_date) VALUES (4,'2020-05-16T10:00:00Z','2020-06-16T10:00:00Z');
+INSERT INTO tb_ticket_payment(request_id,  due_date, payment_date) VALUES (5,'2020-04-14T10:00:00Z','2020-06-14T10:00:00Z');
+
+INSERT INTO tb_card_payment(request_id, number_of_quotas) VALUES (6,1);
+INSERT INTO tb_card_payment(request_id, number_of_quotas) VALUES (7,2);
+INSERT INTO tb_card_payment(request_id, number_of_quotas) VALUES (8,3);
+INSERT INTO tb_card_payment(request_id, number_of_quotas) VALUES (9,2);
+INSERT INTO tb_card_payment(request_id, number_of_quotas) VALUES (10,6);
+
+INSERT INTO tb_item_request(product_id, request_id,price, quantity, discount) VALUES (1,1,2000.0, 1, 100.0);
+INSERT INTO tb_item_request(product_id, request_id,price, quantity, discount) VALUES (2,2,2499.0, 2, 249.0);
+INSERT INTO tb_item_request(product_id, request_id,price, quantity, discount) VALUES (3,3,39.0, 10, 39.0);
+
+
 
 
 

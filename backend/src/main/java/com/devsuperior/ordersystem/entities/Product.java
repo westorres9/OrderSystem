@@ -2,9 +2,8 @@ package com.devsuperior.ordersystem.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+
 @Entity
 @Table(name = "tb_product")
 public class Product implements Serializable {
@@ -15,6 +14,9 @@ public class Product implements Serializable {
     private Long id;
     private String name;
     private Double price;
+
+    @OneToMany(mappedBy = "id.product")
+    private Set<ItemRequest> itemRequests = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_product_category",
@@ -30,6 +32,14 @@ public class Product implements Serializable {
         this.id = id;
         this.name = name;
         this.price = price;
+    }
+
+    public List<Request> getRequests() {
+        List<Request> list = new ArrayList<>();
+        for(ItemRequest x : itemRequests) {
+            list.add(x.getRequest());
+        }
+        return list;
     }
 
     public Long getId() {
@@ -58,6 +68,10 @@ public class Product implements Serializable {
 
     public List<Category> getCategories() {
         return categories;
+    }
+
+    public Set<ItemRequest> getItemRequests() {
+        return itemRequests;
     }
 
     @Override

@@ -7,7 +7,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_request")
 public class Request implements Serializable {
@@ -30,6 +33,9 @@ public class Request implements Serializable {
     @ManyToOne
     @JoinColumn(name = "address_id")
     private Address deliveryAddress;
+
+    @OneToMany(mappedBy = "id.request")
+    private Set<ItemRequest> itemRequests = new HashSet<>();
 
     public Request() {
     }
@@ -80,6 +86,10 @@ public class Request implements Serializable {
 
     public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
+    }
+
+    public Set<ItemRequest> getItemRequests() {
+        return itemRequests;
     }
 
     @Override
